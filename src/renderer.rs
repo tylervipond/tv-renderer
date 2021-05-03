@@ -69,7 +69,7 @@ pub struct Renderer {
     queue: Queue,
     sc_desc: SwapChainDescriptor,
     swap_chain: SwapChain,
-    size: (u32, u32),
+    pub size: (u32, u32),
     render_pipeline: RenderPipeline,
     vertex_buffer: Buffer,
     index_buffer: Buffer,
