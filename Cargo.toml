@@ -1,6 +1,6 @@
 [package]
 name = "tv-renderer"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["tylervipond"]
 edition = "2018"
 
@@ -10,7 +10,12 @@ edition = "2018"
 bytemuck = { version = "1.5.1", features = ["derive"] }
 futures = "0.3.14"
 raw-window-handle = "0.3.3"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 wgpu = "0.8.0"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wgpu = { version = "0.8.0", default-features = false }
 
 [build-dependencies]
 anyhow = "1.0.40"
