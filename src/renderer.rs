@@ -102,7 +102,7 @@ impl Renderer {
             .unwrap();
         let sc_desc = SwapChainDescriptor {
             usage: TextureUsage::RENDER_ATTACHMENT,
-            format: TextureFormat::Bgra8UnormSrgb,
+            format: TextureFormat::Rgba8Unorm,
             width: size.0,
             height: size.1,
             present_mode: PresentMode::Fifo,
