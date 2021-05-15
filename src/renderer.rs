@@ -159,6 +159,7 @@ impl Renderer {
             bind_group_layouts: &[&texture_bind_group_layout],
             push_constant_ranges: &[],
         });
+        let swapchain_format = adapter.get_swap_chain_preferred_format(&surface).unwrap();
         let render_pipeline = device.create_render_pipeline(&RenderPipelineDescriptor {
             label: None,
             layout: Some(&render_pipeline_layout),
@@ -170,11 +171,7 @@ impl Renderer {
             fragment: Some(FragmentState {
                 module: &fs_module,
                 entry_point: "main",
-                targets: &[ColorTargetState {
-                    format: sc_desc.format,
-                    blend: Some(BlendState::REPLACE),
-                    write_mask: ColorWrite::ALL,
-                }],
+                targets: &[swapchain_format.into()],
             }),
             primitive: PrimitiveState::default(),
             depth_stencil: None,
