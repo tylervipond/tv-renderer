@@ -1,6 +1,6 @@
 [package]
 name = "tv-renderer"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["tylervipond"]
 edition = "2018"
 

@@ -160,12 +160,12 @@ impl Renderer {
             push_constant_ranges: &[],
         });
         let render_pipeline = device.create_render_pipeline(&RenderPipelineDescriptor {
-            label: Some("Render Pipeline"),
+            label: None,
             layout: Some(&render_pipeline_layout),
             vertex: VertexState {
                 module: &vs_module,
                 entry_point: "main",
-                buffers: &[Vertex::desc()],
+                buffers: &[],
             },
             fragment: Some(FragmentState {
                 module: &fs_module,
@@ -176,21 +176,9 @@ impl Renderer {
                     write_mask: ColorWrite::ALL,
                 }],
             }),
-            primitive: PrimitiveState {
-                topology: PrimitiveTopology::TriangleList,
-                strip_index_format: None,
-                front_face: FrontFace::Ccw,
-                cull_mode: Some(Face::Back),
-                polygon_mode: PolygonMode::Fill,
-                clamp_depth: false,
-                conservative: false,
-            },
+            primitive: PrimitiveState::default(),
             depth_stencil: None,
-            multisample: MultisampleState {
-                count: 1,
-                mask: !0,
-                alpha_to_coverage_enabled: false,
-            },
+            multisample: MultisampleState::default(),
         });
 
         let vertex_buffer = device.create_buffer_init(&BufferInitDescriptor {
